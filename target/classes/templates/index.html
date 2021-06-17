@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Veterinary Patient System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+<style>
+body {
+  background-image: url('/img.png');
+}
+</style>
+
+<div class="container my-2">
+    <img src="/img_3.png" align="left"> <h1>Veterinary Patient List</h1>
+<br>
+    <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Patient </a>
+
+    <table border="1" class="table table-sm table-striped table-secondary table-bordered table-responsive-md">
+        <thead>
+        <tr>
+            <th>Animal Name</th>
+            <th>Animal Species</th>
+            <th>Animal Breed</th>
+            <th>Owner First Name</th>
+            <th>Owner Last Name</th>
+            <th>Owner Phone</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${listEmployees}">
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.species}"></td>
+            <td th:text="${employee.breed}"></td>
+            <td th:text="${employee.ownerFirstName}"></td>
+            <td th:text="${employee.ownerLastName}"></td>
+            <td th:text="${employee.phone}"></td>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-info btn-sm">Update</a>
+                <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
